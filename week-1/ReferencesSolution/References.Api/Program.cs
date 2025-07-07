@@ -24,7 +24,8 @@ namespace References.Api
             app.UseAuthorization();
 
 
-            app.MapControllers();
+            app.MapControllers();  // scan through all the controllers and map the endpoint to the methods. Setups routings
+
 
             app.Run();
         }
