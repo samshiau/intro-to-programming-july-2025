@@ -1,4 +1,5 @@
-﻿using Banking.Domain;
+﻿
+using Banking.Domain;
 
 namespace Banking.Tests.Account;
 
