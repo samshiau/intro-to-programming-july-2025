@@ -4,6 +4,7 @@ import {
   withMethods,
   withProps,
   withState,
+  withHooks,
 } from '@ngrx/signals';
 const COUNT_BY_VALUES = [1, 3, 5] as const;
 type CountByValues = (typeof COUNT_BY_VALUES)[number];
@@ -25,5 +26,13 @@ export const CounterStore = signalStore(
     return {
       setCountBy: (by: CountByValues) => patchState(store, { by }),
     };
+  }),
+  withHooks({
+    onInit() {
+      console.log('created ');
+    },
+    OnDestoryed() {
+      console.log('destoryed');
+    },
   }),
 );
