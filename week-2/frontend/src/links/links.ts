@@ -1,28 +1,17 @@
-import { JsonPipe } from '@angular/common';
-import { Component, ChangeDetectionStrategy, resource } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { List } from './components/list';
+import { Add } from './components/add';
 
 @Component({
   selector: 'app-links',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [List, Add],
   template: `
-    <p>Links Will Go Here</p>
-    @for (link of links.value(); track link.id) {
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">{{ link.href }}</div>
-          {{ link.description }}
-        </div>
-      </div>
-    }
+    <div class="flex flex-row gap-4">
+      <app-links-list />
+      <app-links-add />
+    </div>
   `,
   styles: ``,
 })
-export class Links {
-  links = resource({
-    loader: () =>
-      fetch('http://api.realsever-but-not-really.com/links').then((r) =>
-        r.json(),
-      ),
-  });
-}
+export class Links {}
